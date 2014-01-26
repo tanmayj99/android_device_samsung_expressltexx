@@ -1,4 +1,5 @@
 # Add device specific blobs here
 # NFC firmware
-vendor/firmware/bcm2079xB4_firmware.ncd
-vendor/firmware/bcm2079xB4_pre_firmware.ncd
+vendor/firmware/libpn547_fw.so
+vendor/firmware/libpn547_fw_eng.so
+vendor/firmware/libpn547_fw_platform.so
