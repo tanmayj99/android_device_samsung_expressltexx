@@ -34,7 +34,7 @@ for FILE in `egrep -v '(^#|^$)' ../$DEVICE/device-proprietary-files.txt`; do
   fi
 done
 
-for FILE in `egrep -v '(^#|^$)' ../serrano-common/proprietary-files.txt`; do
+for FILE in `egrep -v '(^#|^$)' ../expressltexx/proprietary-files.txt`; do
   echo "Extracting /system/$FILE ..."
   DIR=`dirname $FILE`
   if [ ! -d $BASE/$DIR ]; then
@@ -47,9 +47,9 @@ for FILE in `egrep -v '(^#|^$)' ../serrano-common/proprietary-files.txt`; do
   fi
 done
 
-BASE=../../../vendor/$VENDOR/serrano-common/proprietary
+BASE=../../../vendor/$VENDOR/expressltexx/proprietary
 rm -rf $BASE/*
-for FILE in `egrep -v '(^#|^$)' ../serrano-common/common-proprietary-files.txt`; do
+for FILE in `egrep -v '(^#|^$)' ../expressltexx/common-proprietary-files.txt`; do
   echo "Extracting /system/$FILE ..."
   DIR=`dirname $FILE`
   if [ ! -d $BASE/$DIR ]; then
@@ -62,4 +62,4 @@ for FILE in `egrep -v '(^#|^$)' ../serrano-common/common-proprietary-files.txt`;
   fi
 done
 
-./../serrano-common/setup-makefiles.sh
+./../expressltexx/setup-makefiles.sh
