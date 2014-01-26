@@ -49,12 +49,12 @@ endif
 TARGET_BOOTLOADER_BOARD_NAME := MSM8960
 
 # Recovery
-BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/express-common/recovery/graphics.c
-BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/express-common/recovery/recovery_keys.c
+BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/expressltexx/recovery/graphics.c
+BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/expressltexx/recovery/recovery_keys.c
 BOARD_USES_MMCUTILS := true
 BOARD_HAS_NO_MISC_PARTITION := true
-TARGET_RECOVERY_FSTAB := device/samsung/express-common/recovery.fstab
-TARGET_RECOVERY_INITRC := device/samsung/express-common/rootdir/init.recovery.rc
+TARGET_RECOVERY_FSTAB := device/samsung/expressltexx/recovery.fstab
+TARGET_RECOVERY_INITRC := device/samsung/expressltexx/rootdir/init.recovery.rc
 
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 10485760
