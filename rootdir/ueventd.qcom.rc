@@ -7,7 +7,7 @@
 #     * Redistributions in binary form must reproduce the above copyright
 #       notice, this list of conditions and the following disclaimer in the
 #       documentation and/or other materials provided with the distribution.
-#     * Neither the name of The Linux Foundation nor
+#     * Neither the name of Code Aurora nor
 #       the names of its contributors may be used to endorse or promote
 #       products derived from this software without specific prior written
 #       permission.
@@ -40,9 +40,7 @@
 /dev/smd_cxm_qmi          0640   radio      radio
 /dev/smd7                 0660   bluetooth  bluetooth
 /dev/smd11                0660   radio      radio
-/dev/radio0               0644   system     system
 /dev/rfcomm0              0660   bluetooth  bluetooth
-/dev/gss                  0660   gps        gps
 /dev/smdcntl0             0640   radio      radio
 /dev/smdcntl1             0640   radio      radio
 /dev/smdcntl2             0640   radio      radio
@@ -66,14 +64,9 @@
 /dev/hsicctl1             0640   radio      radio
 /dev/hsicctl2             0640   radio      radio
 /dev/hsicctl3             0640   radio      radio
-/dev/hsusbctl0            0640   radio      radio
-/dev/hsusbctl1            0640   radio      radio
-/dev/hsusbctl2            0640   radio      radio
-/dev/hsusbctl3            0640   radio      radio
 /dev/video*               0660   system     camera
 /dev/media*               0660   system     camera
 /dev/v4l-subdev*          0660   system     camera
-/dev/qseecom              0660   system     drmrpc
 /dev/gemini0              0660   system     camera
 /dev/jpeg0                0660   system     camera
 /dev/jpeg1                0660   system     camera
@@ -97,23 +90,12 @@
 /dev/msm_wmapro           0660   system     audio
 /dev/msm_amrnb            0660   system     audio
 /dev/msm_amrwb            0660   system     audio
-/dev/msm_amrwbplus        0660   system     audio
 /dev/msm_aac              0660   system     audio
 /dev/msm_multi_aac        0660   system     audio
 /dev/msm_aac_in           0660   system     audio
 /dev/msm_qcelp_in         0660   system     audio
 /dev/msm_evrc_in          0660   system     audio
 /dev/msm_amrnb_in         0640   system     audio
-/dev/msm_a2dp_in          0660   system     audio
-/dev/msm_ac3              0660   system     audio
-/dev/msm_acdb             0660   system     audio
-/dev/msm_cad              0660   system     audio
-/dev/msm_fm               0660   system     audio
-/dev/msm_mvs              0660   system     audio
-/dev/msm_pcm_lp_dec       0660   system     audio
-/dev/msm_preproc_ctl      0660   system     audio
-/dev/msm_rtac             0660   system     audio
-/dev/msm_voicememo        0660   system     audio
 /dev/smd3                 0660   bluetooth  net_bt_stack
 /dev/smd2                 0660   bluetooth  net_bt_stack
 /dev/ttyHSL0              0660   radio      system
@@ -130,7 +112,3 @@
 /dev/dvb/adapter0/dvr*    0664   media      media
 /dev/dvb/adapter0/video*  0664   media      media
 
-# native sensors
-/sys/devices/i2c-12/12-*  pollrate_ms 0664 system system
-/sys/devices/i2c-12/12-*  enable  0664 system system
-/sys/devices/i2c-12/12-*  poll_delay 0664 system system

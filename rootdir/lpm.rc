@@ -17,11 +17,11 @@ on fs
     export ANDROID_ROOT /system
     export ANDROID_ASSETS /system/app
     export ANDROID_DATA /data
-
+    
     export EXTERNAL_STORAGE /mnt/sdcard
     export EXTERNAL_STORAGE2 /mnt/sdcard/external_sd
     export USBHOST_STORAGE /mnt/sdcard/usbStorage
-
+    
     export ASEC_MOUNTPOINT /mnt/asec
     export LOOP_MOUNTPOINT /mnt/obb
     export BOOTCLASSPATH /system/framework/core.jar:/system/framework/bouncycastle.jar:/system/framework/ext.jar:/system/framework/framework.jar:/system/framework/android.policy.jar:/system/framework/services.jar:/system/framework/core-junit.jar
@@ -102,27 +102,22 @@ on fs
 
 # insmod the modules
 
-on post-fs
-
-    wait /dev/block/platform/msm_sdcc.1/by-name/system
-    check_fs /dev/block/platform/msm_sdcc.1/by-name/system ext4
-    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/system /system ro barrier=1
-
-    wait /dev/block/platform/msm_sdcc.1/by-name/userdata
-    exec /system/bin/e2fsck -p /dev/block/platform/msm_sdcc.1/by-name/userdata
-
-    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/userdata /data nosuid nodev barrier=1 noauto_da_alloc
-    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/persist /persist nosuid nodev barrier=1
-    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/cache /cache nosuid nodev barrier=1
-
+on emmc-fs
+# mount mmc partitions
+    wait /dev/block/mmcblk0p14
+    mount ext4 /dev/block/mmcblk0p14 /system ro barrier=1
+    wait /dev/block/mmcblk0p15
+    exec /system/bin/e2fsck -p /dev/block/mmcblk0p15
+    mount ext4 /dev/block/mmcblk0p15 /data nosuid nodev barrier=1 noauto_da_alloc
+    mount ext4 /dev/block/mmcblk0p16 /persist nosuid nodev barrier=1
+    mount ext4 /dev/block/mmcblk0p17 /cache nosuid nodev barrier=1
     #Setting permissons for misc partition
-	chmod 0666 /dev/block/platform/msm_sdcc.1/by-name/fota
+    chmod 0666 /dev/block/mmcblk0p19
 
-    wait /dev/block/platform/msm_sdcc.1/by-name/efs
-    check_fs /dev/block/platform/msm_sdcc.1/by-name/efs ext4
-    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/efs /efs nosuid nodev noatime noauto_da_alloc,discard,journal_async_commit,errors=panic
-	chown system radio /efs
-	chmod 0771 /efs
+# mount efs partition
+    mount ext4 /dev/block/mmcblk0p11 /efs nosuid nodev barrier=1
+    chown system radio /efs
+    chmod 0771 /efs
 
 on boot
 
@@ -161,3 +156,4 @@ on property:persist.service.adb.enable=1
 
 on property:persist.service.adb.enable=0
     stop adbd
+
