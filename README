@@ -3,3 +3,28 @@ Copyright 2014 - The CyanogenMod Project
 Device configuration for Samsung Galaxy Express GT-I8730 (European LTE model).
 
 WORK IN PROGRESS. WILL EAT YOUR CAT.
+
+						Current progress:
+
+
+Doesn't work:
+- RIL
+- WiFi
+- Audio is faster than it should
+- Video recording (untested)
+- Camera preview (and after reopening the camera, it can't connect to the HW anymore)
+- Occasional hot reboot if you lock the screen, then trying to unlock it
+- Apollo can only play music if you select the track, close the app, then reopen it, and choose the track again
+
+Works:
+- Screen
+- Touch
+- Buttons
+- Sensors
+- Video Playback
+- NFC
+- Bluetooth
+- GPS
+- Audio (with the mentioned bug)
+- Camera (buggy)
+- etc.
