@@ -8,15 +8,13 @@ WORK IN PROGRESS. WILL EAT YOUR CAT.
 
 
 Doesn't work:
-- RIL
-- WiFi
-- Audio is faster than it should
 - Video recording (untested)
-- Camera preview (and after reopening the camera, it can't connect to the HW anymore)
+- Headset audio is broken, and makes the phone laggy
 - Occasional hot reboot if you lock the screen, then trying to unlock it
-- Apollo can only play music if you select the track, close the app, then reopen it, and choose the track again
 
 Works:
+- RIL
+- WiFi
 - Screen
 - Touch
 - Buttons
@@ -25,6 +23,6 @@ Works:
 - NFC
 - Bluetooth
 - GPS
-- Audio (with the mentioned bug)
-- Camera (buggy)
+- Audio (buggy)
+- Camera
 - etc.
