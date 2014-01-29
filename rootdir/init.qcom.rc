@@ -55,6 +55,15 @@ on init
     symlink /storage/usbdisk0 /usbdisk0
     symlink /storage/usbdisk0 /mnt/usbdisk0
 
+    # Vibetonz
+    export VIBE_PIPE_PATH /dev/pipes
+    mkdir /dev/pipes 0771 system system
+
+    # Create USB host bus directory here so that libusbhost
+    # can start monitoring.
+    mkdir /dev/bus 0755 root root
+    mkdir /dev/bus/usb 0755 root root
+
 on early-boot
     # Set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
@@ -91,11 +100,6 @@ on boot
 
     # Remove SUID bit for iproute2 ip tool
     chmod 0755 /system/bin/ip
-
-    # NFC
-    setprop ro.nfc.port "I2C"
-    chmod 0777 /dev/pn547
-    chown nfc nfc /dev/pn547
 
     chmod 0444 /sys/devices/platform/msm_hsusb/gadget/usb_state
 
@@ -170,6 +174,8 @@ on boot
 
     # Don't disable dmesg access for apps
     write /proc/sys/kernel/dmesg_restrict 0
+
+    symlink /dev/block/mmcblk0p10 /dev/block/param
 
 # MSM specific files that need to be created on /data
 on post-fs-data

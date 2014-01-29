@@ -1,4 +1,4 @@
-# Copyright (C) 2013 The CyanogenMod Project
+# Copyright (C) 2014 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,28 +20,25 @@
 # definition file).
 #
 
-# Inherit from the proprietary version
--include vendor/samsung/expressltexx/BoardConfigVendor.mk
-
-# Assert
-TARGET_OTA_ASSERT_DEVICE := expresslte,expressltexx,i8730,GT-I8730
-
-# NFC
-BOARD_HAVE_NFC := true
-
 # inherit from common msm8930
 -include device/samsung/msm8930-common/BoardConfigCommon.mk
 
+# Inherit from the proprietary version
+-include vendor/samsung/expressltexx/BoardConfigVendor.mk
+
 TARGET_SPECIFIC_HEADER_PATH := device/samsung/expressltexx/include
+
+# Assert
+TARGET_OTA_ASSERT_DEVICE := expresslte,expressltexx,i8730,GT-I8730
 
 # Kernel
 BOARD_KERNEL_CMDLINE         := androidboot.hardware=qcom user_debug=31 zcache
 BOARD_KERNEL_BASE            := 0x80200000
 BOARD_MKBOOTIMG_ARGS         := --ramdisk_offset 0x02000000
 BOARD_KERNEL_PAGESIZE        := 2048
-TARGET_KERNEL_SOURCE         := kernel/samsung/expressltexx
-TARGET_KERNEL_CONFIG         := szezso_defconfig
-TARGET_KERNEL_VARIANT_CONFIG := msm8930_express_defconfig
+TARGET_KERNEL_SOURCE         := kernel/samsung/msm8930-common
+TARGET_KERNEL_CONFIG         := cyanogen_express_defconfig
+TARGET_KERNEL_VARIANT_CONFIG := msm8930_express_eur_lte_defconfig
 ifeq ($(HAVE_SELINUX),true)
 TARGET_KERNEL_SELINUX_CONFIG := selinux_defconfig
 endif
@@ -68,6 +65,7 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/expressltexx/bluetooth
 
 # NFC
+BOARD_HAVE_NFC := true
 BOARD_NFC_HAL_SUFFIX := msm8960
 
 # Disable initlogo, Samsungs framebuffer is weird

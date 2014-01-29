@@ -1,28 +1,5 @@
 Copyright 2014 - The CyanogenMod Project
 
-Device configuration for Samsung Galaxy Express GT-I8730 (European LTE model).
+Device configuration for Samsung Galaxy Express (European LTE model).
 
 WORK IN PROGRESS. WILL EAT YOUR CAT.
-
-						Current progress:
-
-
-Doesn't work:
-- Video recording (untested)
-- Headset audio is broken, and makes the phone laggy
-- Occasional hot reboot if you lock the screen, then trying to unlock it
-
-Works:
-- RIL
-- WiFi
-- Screen
-- Touch
-- Buttons
-- Sensors
-- Video Playback
-- NFC
-- Bluetooth
-- GPS
-- Audio (buggy)
-- Camera
-- etc.

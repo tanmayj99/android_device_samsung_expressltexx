@@ -2,6 +2,9 @@
 
 set -e
 
+export DEVICE=expressltexx
+export VENDOR=samsung
+
 if [ $# -eq 0 ]; then
   SRC=adb
 else
@@ -21,35 +24,7 @@ fi
 BASE=../../../vendor/$VENDOR/$DEVICE/proprietary
 rm -rf $BASE/*
 
-for FILE in `egrep -v '(^#|^$)' ../$DEVICE/device-proprietary-files.txt`; do
-  echo "Extracting /system/$FILE ..."
-  DIR=`dirname $FILE`
-  if [ ! -d $BASE/$DIR ]; then
-    mkdir -p $BASE/$DIR
-  fi
-  if [ "$SRC" = "adb" ]; then
-    adb pull /system/$FILE $BASE/$FILE
-  else
-    cp $SRC/system/$FILE $BASE/$FILE
-  fi
-done
-
-for FILE in `egrep -v '(^#|^$)' ../expressltexx/proprietary-files.txt`; do
-  echo "Extracting /system/$FILE ..."
-  DIR=`dirname $FILE`
-  if [ ! -d $BASE/$DIR ]; then
-    mkdir -p $BASE/$DIR
-  fi
-  if [ "$SRC" = "adb" ]; then
-    adb pull /system/$FILE $BASE/$FILE
-  else
-    cp $SRC/system/$FILE $BASE/$FILE
-  fi
-done
-
-BASE=../../../vendor/$VENDOR/expressltexx/proprietary
-rm -rf $BASE/*
-for FILE in `egrep -v '(^#|^$)' ../expressltexx/common-proprietary-files.txt`; do
+for FILE in `egrep -v '(^#|^$)' ../$DEVICE/proprietary-files.txt`; do
   echo "Extracting /system/$FILE ..."
   DIR=`dirname $FILE`
   if [ ! -d $BASE/$DIR ]; then

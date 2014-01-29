@@ -99,11 +99,6 @@ on post-fs-data
     write /sys/class/input/input7/distortion "400 50 15"
 
     # geomagnetic_raw
-    chown compass input /sys/class/input/input4/offsets
-    chown compass input /sys/class/input/input4/dynamic_matrix
-    chown system input /sys/class/input/input4/threshold
-    chown system input /sys/class/input/input4/distortion
-    chown system input /sys/class/input/input4/shape
     chown compass input /sys/class/input/input5/offsets
     chown compass input /sys/class/input/input5/dynamic_matrix
     chown system input /sys/class/input/input5/threshold
@@ -119,11 +114,6 @@ on post-fs-data
     chown system input /sys/class/input/input7/threshold
     chown system input /sys/class/input/input7/distortion
     chown system input /sys/class/input/input7/shape
-    chown compass input /sys/class/input/input8/offsets
-    chown compass input /sys/class/input/input8/dynamic_matrix
-    chown system input /sys/class/input/input8/threshold
-    chown system input /sys/class/input/input8/distortion
-    chown system input /sys/class/input/input8/shape
 
     # light_sensor
     chown system input /sys/class/input/input7/enable
@@ -167,14 +157,6 @@ on post-fs-data
     chown system input /sys/class/input/input4/position
 
     # geomagnetic
-    chown system input /sys/class/input/input3/enable
-    chown system input /sys/class/input/input3/delay
-    chown system input /sys/class/input/input3/filter_enable
-    chown system input /sys/class/input/input3/filter_len
-    chown system input /sys/class/input/input3/data
-    chown system input /sys/class/input/input3/status
-    chown system input /sys/class/input/input3/wake
-    chown system input /sys/class/input/input3/position
     chown system input /sys/class/input/input4/enable
     chown system input /sys/class/input/input4/delay
     chown system input /sys/class/input/input4/filter_enable
@@ -206,9 +188,6 @@ on post-fs-data
     chown system input /sys/class/input/input8/enable
 
     # orientation
-    chown system input /sys/class/input/input5/enable
-    chown system input /sys/class/input/input5/delay
-    chown system input /sys/class/input/input5/wake
     chown system input /sys/class/input/input6/enable
     chown system input /sys/class/input/input6/delay
     chown system input /sys/class/input/input6/wake
@@ -244,8 +223,6 @@ on post-fs-data
     chown system radio /sys/class/sensors/proximity_sensor/prox_cal2
     chown system radio /sys/class/sensors/proximity_sensor/prox_offset_pass
     chown system radio /sys/class/sensors/proximity_sensor/prox_thresh
-    chown system radio /sys/class/sensors/proximity_sensor/thresh_high
-    chown system radio /sys/class/sensors/proximity_sensor/thresh_low
     chown system radio /sys/class/sensors/proximity_sensor/vendor
     chown system radio /sys/class/sensors/proximity_sensor/name
 
@@ -254,19 +231,19 @@ on post-fs-data
     chown system radio /sys/class/sensors/light_sensor/vendor
     chown system radio /sys/class/sensors/light_sensor/name
 
+    chown system system /dev/i2c-11
+    chmod 660 /dev/i2c-11
+    chown system system /dev/i2c-24
+    chmod 660 /dev/i2c-24
+
     # Permissions for NCM
     chmod 0660 /sys/class/android_usb/android0/terminal_version
     chown system system /sys/class/android_usb/android0/terminal_version
 
-    # NFC_BROADCOM
-    chmod 0600 /dev/bcm2079x
-    chown nfc nfc /dev/bcm2079x
-    mkdir /data/nfc
-    mkdir /data/nfc/param
-    chmod 0770 /data/nfc
-    chmod 0770 /data/nfc/param
-    chown nfc nfc /data/nfc
-    chown nfc nfc /data/nfc/param
+    # NFC
+    setprop ro.nfc.port "I2C"
+    chmod 0660 /dev/pn547
+    chown nfc nfc /dev/pn547
 
     # MDNIE
     chown system system  /sys/class/mdnie/mdnie/lcdtype
@@ -295,8 +272,15 @@ on post-fs-data
     chown system radio /sys/class/sec/sec_touch_ic
     chmod 0777 /dev/s3c-g2touch
 
+    chown radio system /sys/class/lcd/panel/power_reduce
+    chown radio system /sys/class/lcd/panel/gamma_mode
+    chown system system /sys/class/lcd/panel/lcd_type
+    chown system system /sys/class/lcd/panel/lcd_power
+
     # TKEY
+    chown radio system /sys/class/sec/sec_touchkey/touch_sensitivity
     chown system radio /sys/class/sec/sec_touchkey/touchkey_firm_update
+    chown system radio /sys/class/sec/tsp/cmd
 
     # Camera permission
     chown system camera /sys/class/camera/flash/rear_flash
