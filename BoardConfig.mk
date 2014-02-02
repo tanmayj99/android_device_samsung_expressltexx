@@ -38,7 +38,6 @@ BOARD_MKBOOTIMG_ARGS         := --ramdisk_offset 0x02000000
 BOARD_KERNEL_PAGESIZE        := 2048
 TARGET_KERNEL_SOURCE         := kernel/samsung/expressltexx
 TARGET_KERNEL_CONFIG         := szezso_defconfig
-TARGET_KERNEL_VARIANT_CONFIG := msm8930_express_eur_lte_defconfig
 ifeq ($(HAVE_SELINUX),true)
 TARGET_KERNEL_SELINUX_CONFIG := selinux_defconfig
 endif
