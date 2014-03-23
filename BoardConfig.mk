@@ -85,3 +85,4 @@ COMMON_GLOBAL_CFLAGS += -DQCOM_BSP
 
 # We provide our own camera HAL
 TARGET_PROVIDES_CAMERA_HAL := true
+USE_CAMERA_STUB := true
